@@ -1,7 +1,6 @@
 package robots;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,28 +14,33 @@ public class ConnectToMariaDB {
 
     private static final Logger logger = LogManager.getLogger(ConnectToMariaDB.class);
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/db?useSSL=false&allowPublicKeyRetrieval=true";
+        String url = "jdbc:mariadb://localhost:3306/db";
         String user = "root";
         String password = "root123";
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RobotsRuntimeException("Driver Error", e);
-        }
-        try (Connection conn = DriverManager.getConnection(url, user, password)){
+        Connection conn = null;
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
             stmt.execute("SELECT * FROM bookmarks");
 
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-                long id = rs.getLong("ID");
-                String name = rs.getString("NAME");
-                String lastName = rs.getString("URL");
+                logger.info(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
             }
+
             stmt.close();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             logger.error("SQL Error", e);
             throw new RobotsRuntimeException("SQL Error", e);
+        } finally {
+            try {
+                if (null != conn) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                logger.error("Error close DDBB Connection", e);
+            }
         }
     }
 }

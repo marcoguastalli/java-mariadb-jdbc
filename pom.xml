@@ -91,11 +91,11 @@
     </build>
 
     <dependencies>
-        <!-- JDBC Drivers https://github.com/mariadb-corporation/mariadb-connector-j -->
+        <!-- MariaDB JDBC Drivers https://github.com/mariadb-corporation/mariadb-connector-j -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client-jre6</artifactId>
+            <version>1.6.1</version>
         </dependency>
         <!-- Log https://github.com/apache/logging-log4j2/releases -->
         <dependency>
