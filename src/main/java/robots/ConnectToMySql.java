@@ -18,6 +18,7 @@ public class ConnectToMySql {
         String user = "novo";
         String password = "novo123";
         try (Connection conn = DriverManager.getConnection(url, user, password)){
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Statement stmt = conn.createStatement();
             stmt.execute("SELECT * FROM books");
 
@@ -28,7 +29,7 @@ public class ConnectToMySql {
                 logger.info(id + " " + title);
             }
             stmt.close();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             logger.error("SQL Error", e);
             throw new RobotsRuntimeException("SQL Error", e);
         }
