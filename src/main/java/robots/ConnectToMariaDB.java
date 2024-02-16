@@ -14,19 +14,20 @@ public class ConnectToMariaDB {
 
     private static final Logger logger = LogManager.getLogger(ConnectToMariaDB.class);
     public static void main(String[] args) {
-        String url = "jdbc:mariadb://localhost:3306/db";
-        String user = "root";
-        String password = "root123";
+        //String url = "jdbc:mariadb://localhost:3306/novo?useSSL=false&allowPublicKeyRetrieval=true";
+        String url = "jdbc:mariadb://localhost:3306/novo?useSSL=false";
+        String user = "novo";
+        String password = "novo123";
         Connection conn = null;
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
-            stmt.execute("SELECT * FROM bookmarks");
+            stmt.execute("SELECT * FROM books");
 
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-                logger.info(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
+                logger.info(rs.getString(1) + " " + rs.getString(2));
             }
 
             stmt.close();
@@ -43,4 +44,5 @@ public class ConnectToMariaDB {
             }
         }
     }
+
 }
