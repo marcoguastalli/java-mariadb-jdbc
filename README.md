@@ -8,6 +8,7 @@ Java connect to MariaDB using JDBC Drivers
 `cd ~/dev/repository/git/docker27/mariadb/src/v1`
 `docker-compose up -d`
 `docker-compose down -v`
+`colima stop`
 
 http://marco27.net/
 http://marco27.net/index.php
