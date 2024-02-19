@@ -15,7 +15,7 @@ public class ConnectToMariaDB {
     private static final Logger logger = LogManager.getLogger(ConnectToMariaDB.class);
     public static void main(String[] args) {
         //String url = "jdbc:mariadb://localhost:3306/dbuser?useSSL=false&allowPublicKeyRetrieval=true";
-        String url = "jdbc:mariadb://localhost:3306/dbuser?useSSL=false";
+        String url = "jdbc:mariadb://localhost:3306/db?useSSL=false";
         String user = "dbuser";
         String password = "dbuser123";
         Connection conn = null;
