@@ -1,1 +1,0 @@
-INSERT INTO `bookmarks` (`ID`, `NAME`, `URL`) VALUES ('27', 'marco 27', 'http://www.marco27.net');

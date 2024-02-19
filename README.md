@@ -1,5 +1,5 @@
 # java-mariadb-jdbc
-Java connect to MariaDB using JDBC Drivers
+Java connect to MariaDB and MySQL using JDBC Drivers
 
 `mysql.server start`
 `mysql.server stop`
