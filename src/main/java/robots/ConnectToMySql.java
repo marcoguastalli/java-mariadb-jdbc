@@ -29,7 +29,7 @@ public class ConnectToMySql {
                 logger.info(id + " " + title);
             }
             stmt.close();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             logger.error("SQL Error", e);
             throw new RobotsRuntimeException("SQL Error", e);
         }
