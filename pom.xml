@@ -6,7 +6,7 @@
 
     <groupId>net.marco27.java</groupId>
     <artifactId>java-mariadb-jdbc</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>${project.artifactId}</name>
 
     <properties>
